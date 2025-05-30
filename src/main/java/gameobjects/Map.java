@@ -1,8 +1,6 @@
-package map;
+package gameobjects;
 
-import gameobjects.*;
-
-import java.util.*;
+import java.util.HashMap;
 
 public class Map {
     private static HashMap<String, Place>map;
