@@ -18,7 +18,8 @@ import java.util.List;
 
 public class Main {
 
-    Static Game game;
+    /* Static Game game; */
+    
     public static void main(String[] args) throws IOException {
         Boolean running = true;
         BufferedReader in;
@@ -34,10 +35,10 @@ public class Main {
                 case "quit":
                     running = false;
                     break;
-                case "save":
+                /*case "save":
                     saveGame();
                 case "load":
-                    loadGame();
+                    loadGame(); */
                 default:
                     output = runCommand(input);
                     break;
@@ -48,6 +49,7 @@ public class Main {
         } while (running);
     }
 
+    /*
     private static void loadGame() {
         try {
             FileInputStream fis = new FileInputStream("Adv.sav");
@@ -59,7 +61,7 @@ public class Main {
             System.out.print("Serialization Error! Can't load data.\n");
             System.out.print(e.getClass() + ": " + e.getMessage() + "\n");
         }
-    }
+    } */
 
     public static void parseCommand(List<String> wordList) {
         String command;
@@ -93,6 +95,7 @@ public class Main {
         return out;
     }
 
+    /*
     private static void saveGame() {
         try {
             FileOutputStream fos = new FileOutputStream("Adv.sav");
@@ -105,7 +108,7 @@ public class Main {
             System.out.print("Serialization Error! Can't save data.\n"
                     + e.getClass() + ": " + e.getMessage() + "\n");
         }
-    }
+    } */
 
     public static List<String> wordList(String input) {
         String delims = "[ \t,.:;?!\"']+";
