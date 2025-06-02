@@ -1,5 +1,10 @@
 package game;
 
+import gameobjects.Actor;
+import gameobjects.GameObject;
+import gameobjects.Map;
+import gameobjects.Place;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,7 +23,7 @@ import java.util.List;
 
 public class Main {
 
-    /* Static Game game; */
+    private Actor player = new Actor();
     
     public static void main(String[] args) throws IOException {
         Boolean running = true;
@@ -49,20 +54,6 @@ public class Main {
         } while (running);
     }
 
-    /*
-    private static void loadGame() {
-        try {
-            FileInputStream fis = new FileInputStream("Adv.sav");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            game = (Game) ois.readObject();
-            ois.close();
-            System.out.print("\n---Game loaded---\n");
-        } catch (Exception e) {
-            System.out.print("Serialization Error! Can't load data.\n");
-            System.out.print(e.getClass() + ": " + e.getMessage() + "\n");
-        }
-    } */
-
     public static void parseCommand(List<String> wordList) {
         String command;
         String object;
@@ -83,17 +74,48 @@ public class Main {
         }
     }
 
+    public static void showIntro(){
+        String s;
+        s = "O Guerreiro Titão";
+        System.out.println(s);
+    }
+
     public static String runCommand(String inputstr) {
         List<String> wl;
         String lowstr = inputstr.trim().toLowerCase();
         String out = "PLACEHOLDER";
 
-        if (!lowstr.equals("q") && !lowstr.equals("quit")) {
+        if (!lowstr.equals("quit")) {
             wl = wordList(lowstr);
             parseCommand(wl);
         }
         return out;
     }
+
+    public static List<String> wordList(String input) {
+        String delims = "[ \t,.:;?!\"']+";
+        List<String> strlist = new ArrayList<>();
+        String[] words = input.split(delims);
+
+        for (String word : words) {
+            strlist.add(word);
+        }
+        return strlist;
+    }
+
+    /*
+    private static void loadGame() {
+        try {
+            FileInputStream fis = new FileInputStream("Adv.sav");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            game = (Game) ois.readObject();
+            ois.close();
+            System.out.print("\n---Game loaded---\n");
+        } catch (Exception e) {
+            System.out.print("Serialization Error! Can't load data.\n");
+            System.out.print(e.getClass() + ": " + e.getMessage() + "\n");
+        }
+    } */
 
     /*
     private static void saveGame() {
@@ -109,15 +131,4 @@ public class Main {
                     + e.getClass() + ": " + e.getMessage() + "\n");
         }
     } */
-
-    public static List<String> wordList(String input) {
-        String delims = "[ \t,.:;?!\"']+";
-        List<String> strlist = new ArrayList<>();
-        String[] words = input.split(delims);
-
-        for (String word : words) {
-            strlist.add(word);
-        }
-        return strlist;
-    }
 }

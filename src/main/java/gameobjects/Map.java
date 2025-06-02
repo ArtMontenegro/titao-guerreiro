@@ -2,10 +2,13 @@ package gameobjects;
 
 import java.util.HashMap;
 
-public class Map {
-    private static HashMap<String, Place>map;
+import gameobjects.*;
 
-    public static void main(String[] args) {
+public class Map {
+    private static HashMap<String, Place> map;
+
+    public void initMap(String[] args) {
+
         map = new HashMap<String, Place>();
 
         // Add Places to the map
@@ -14,4 +17,3 @@ public class Map {
         map.put("oficina", new Place("oficina", "Onde se encontram as ferramentas.", 1, -1, 2, 0));
     }
 }
-
