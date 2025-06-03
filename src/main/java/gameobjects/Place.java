@@ -1,5 +1,7 @@
 package gameobjects;
 
+import gameobjects.Map.PlaceName;
+
 /*
  * 
  * @author Arthur Oliveira Montenegro
@@ -7,12 +9,12 @@ package gameobjects;
 
 public class Place {
 
-    private String name, desc;
-    private int n, s, e, w;
+    private String name;
+    private String desc;
+    private PlaceName n, s, e, w;
 
     // Class constructor method
-    public Place(
-        String aName, String aDesc, int aN, int aS, int aE, int aW) {
+    public Place(String aName, String aDesc, PlaceName aN, PlaceName aS, PlaceName aE, PlaceName aW) {
         name = aName;
         desc = aDesc;
         n = aN;
@@ -22,43 +24,45 @@ public class Place {
     }
     
     // Accessor methods
-
-    public String getName() {
+    public String getName(){
         return name;
+    }
+    public void setName(String aName) {
+        this.name = aName;
     }
 
     public String getDesc() {
         return desc;
     }
     public void setDesc(String aDesc) {
-        desc = aDesc;
+        this.desc = aDesc;
     }
 
-    public int getN() {
+    public PlaceName getN() {
         return n;
     }
-    public void setN(int aN) {
+    public void setN(PlaceName aN) {
         n = aN;
     }
 
-    public int getS() {
+    public PlaceName getS() {
         return s;
     }
-    public void setS(int aS) {
+    public void setS(PlaceName aS) {
         s = aS;
     }
 
-    public int getE() {
+    public PlaceName getE() {
         return e;
     }
-    public void setE(int aE) {
+    public void setE(PlaceName aE) {
         e = aE;
     }
 
-    public int getW() {
+    public PlaceName getW() {
         return w;
     }
-    public void setW(int aW) {
+    public void setW(PlaceName aW) {
         w = aW;
     }
 }
