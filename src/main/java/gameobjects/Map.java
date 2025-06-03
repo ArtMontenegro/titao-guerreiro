@@ -1,19 +1,20 @@
 package gameobjects;
 
-import java.util.HashMap;
-
-import gameobjects.*;
-
 public class Map {
-    private static HashMap<String, Place> map;
 
-    public void initMap(String[] args) {
+    public enum Direction {
+        NORTH,
+        SOUTH,
+        EAST,
+        WEST;
+        public static final PlaceName NOEXIT = PlaceName.NOEXIT;
+    }
 
-        map = new HashMap<String, Place>();
-
-        // Add Places to the map
-        // map.put(key, new Place(name, desc, n, s, e, w));
-        map.put("casa", new Place("minha casa", "Onde eu moro, foi construida pelo meu pai.", 1, -1, 1, -1));
-        map.put("oficina", new Place("oficina", "Onde se encontram as ferramentas.", 1, -1, 2, 0));
+    public enum PlaceName {
+        MASTERHOUSE, MYHOUSE, WORKSHOP, MONASTERY, ELDERHOUSE,
+        MOUNTBASE, MORIAH, FOREST, PATH, CORRAL, PLANTATION, PLANTGATE, ROADCURVE,
+        EGATE, GARDEN, STORE, FEMRES, CHAPEL, RIVER, HALL, MALRES,
+        SPORTS, FIELD, WGATE, NEWSTORE, NEWCISTERN, SMALLPLANT, SMALLCORRAL, COFFEE,
+        NOEXIT;
     }
 }
