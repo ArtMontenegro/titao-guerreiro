@@ -1,6 +1,13 @@
-apply plugin: "java"
+plugins {
+	id 'java'
+	id 'application'
+}
 
-task runJava(type: JavaExec) {
+application {
+	mainClass = 'game.Main' // Use your actual main class
+}
+
+tasks.register('runJava', JavaExec) {
 	classpath = sourceSets.main.runtimeClasspath
-	main = "game.Main"
+	mainClass = "game.Main"
 }
