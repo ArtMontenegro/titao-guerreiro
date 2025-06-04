@@ -19,10 +19,69 @@ public class Game {
 
         // Add Places to the map
         // map.put(PlaceName, new Place(name, desc, n, s, e, w));
-        map.put(PlaceName.MASTERHOUSE, new Place("master house", "placeholder", PlaceName.EGATE, PlaceName.MOUNTBASE,
-                PlaceName.MYHOUSE, PlaceName.NOEXIT));
-        map.put(PlaceName.MYHOUSE, new Place("my house", "placeholder", PlaceName.WORKSHOP, PlaceName.MOUNTBASE,
-                PlaceName.WORKSHOP, PlaceName.MASTERHOUSE));
+        map.put(PlaceName.MASTERHOUSE, new Place("master house", "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MYHOUSE, PlaceName.PLANTATION));
+        map.put(PlaceName.MYHOUSE, new Place("my house", "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.WORKSHOP, PlaceName.MASTERHOUSE));
+        map.put(PlaceName.WORKSHOP, new Place("workshop", "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MONASTERY, PlaceName.MYHOUSE));
+        map.put(PlaceName.MONASTERY, new Place("monastery", "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.ELDERHOUSE, PlaceName.WORKSHOP));
+        map.put(PlaceName.ELDERHOUSE, new Place("elder's house", "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.NOEXIT, PlaceName.MONASTERY));
+        map.put(PlaceName.MOUNTBASE, new Place("mount moriah base", "placeholder",
+                PlaceName.MYHOUSE, PlaceName.MORIAH, PlaceName.NOEXIT, PlaceName.PLANTATION));
+        map.put(PlaceName.MORIAH, new Place("moriah", "placeholder",
+                PlaceName.MOUNTBASE, PlaceName.FOREST, PlaceName.NOEXIT, PlaceName.PATH));
+
+        map.put(PlaceName.FOREST, new Place("forest", "placeholder",
+                PlaceName.MORIAH, PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.NOEXIT));
+        map.put(PlaceName.PATH, new Place("path", "placeholder",
+                PlaceName.NOEXIT, PlaceName.CORRAL, PlaceName.MORIAH, PlaceName.NOEXIT));
+        map.put(PlaceName.CORRAL, new Place("corral", "placeholder",
+                PlaceName.BEES, PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.ROADCURVE));
+        map.put(PlaceName.BEES, new Place("bees", "placeholder",
+                PlaceName.PLANTATION, PlaceName.CORRAL, PlaceName.NOEXIT, PlaceName.NOEXIT));
+        map.put(PlaceName.PLANTATION, new Place("plantation", "placeholder",
+                PlaceName.MASTERHOUSE, PlaceName.BEES, PlaceName.MOUNTBASE, PlaceName.PLANTGATE));
+        map.put(PlaceName.PLANTGATE, new Place("plantation gate", "placeholder",
+                PlaceName.WGATE, PlaceName.ROADCURVE, PlaceName.PLANTATION, PlaceName.NOEXIT));
+        map.put(PlaceName.ROADCURVE, new Place("road curve", "placeholder",
+                PlaceName.PLANTGATE, PlaceName.NOEXIT, PlaceName.CORRAL, PlaceName.NOEXIT));
+
+        map.put(PlaceName.EGATE, new Place("eastern gate", "placeholder",
+                PlaceName.FEMRES, PlaceName.MONASTERY, PlaceName.GARDEN, PlaceName.HALL));
+        map.put(PlaceName.GARDEN, new Place("garden", "placeholder",
+                PlaceName.STORE, PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.EGATE));
+        map.put(PlaceName.STORE, new Place("store", "placeholder",
+                PlaceName.CHAPEL, PlaceName.GARDEN, PlaceName.NOEXIT, PlaceName.FEMRES));
+        map.put(PlaceName.FEMRES, new Place("female residence", "placeholder",
+                PlaceName.CHAPEL, PlaceName.EGATE, PlaceName.STORE, PlaceName.SPORTS));
+        map.put(PlaceName.CHAPEL, new Place("chapel", "placeholder",
+                PlaceName.RIVER, PlaceName.STORE, PlaceName.NOEXIT, PlaceName.SPORTS));
+        map.put(PlaceName.RIVER, new Place("river", "placeholder",
+                PlaceName.NOEXIT, PlaceName.CHAPEL, PlaceName.NOEXIT, PlaceName.NOEXIT));
+        map.put(PlaceName.HALL, new Place("hall", "placeholder",
+                PlaceName.SPORTS, PlaceName.NOEXIT, PlaceName.EGATE, PlaceName.MALRES));
+        map.put(PlaceName.MALRES, new Place("male residence", "placeholder",
+                PlaceName.SPORTS, PlaceName.NOEXIT, PlaceName.HALL, PlaceName.WGATE));
+
+        map.put(PlaceName.SPORTS, new Place("sports area", "placeholder",
+                PlaceName.FIELD, PlaceName.HALL, PlaceName.CHAPEL, PlaceName.NEWSTORE));
+        map.put(PlaceName.FIELD, new Place("football field", "placeholder",
+                PlaceName.RIVER, PlaceName.SPORTS, PlaceName.CHAPEL, PlaceName.SMALLPLANT));
+        map.put(PlaceName.SMALLPLANT, new Place("small plantation", "placeholder",
+                PlaceName.RIVER, PlaceName.SPORTS, PlaceName.FIELD, PlaceName.NEWCISTERN));
+        map.put(PlaceName.WGATE, new Place("western gate", "placeholder",
+                PlaceName.NEWSTORE, PlaceName.PLANTGATE, PlaceName.MALRES, PlaceName.NOEXIT));
+        map.put(PlaceName.NEWSTORE, new Place("new store", "placeholder",
+                PlaceName.NEWCISTERN, PlaceName.WGATE, PlaceName.SPORTS, PlaceName.COFFEE));
+        map.put(PlaceName.NEWCISTERN, new Place("new cistern", "placeholder",
+                PlaceName.SMALLCORRAL, PlaceName.NEWSTORE, PlaceName.SMALLPLANT, PlaceName.COFFEE));
+        map.put(PlaceName.SMALLCORRAL, new Place("small corral", "placeholder",
+                PlaceName.RIVER, PlaceName.NEWCISTERN, PlaceName.SMALLPLANT, PlaceName.NOEXIT));
+        map.put(PlaceName.COFFEE, new Place("coffee plantation", "placeholder",
+                PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.NEWCISTERN, PlaceName.NOEXIT));
 
         player = new Actor("player", "placeholder", map.get(PlaceName.MYHOUSE));
     }
@@ -80,26 +139,13 @@ public class Game {
     // Print text after player moves
     private void updateOutput(PlaceName placeName) {
         String output;
-        if (placeName == Direction.NOEXIT) {
+        if (placeName == PlaceName.NOEXIT) {
             output = "No Exit!";
         } else {
             Place place = getPlayer().getLocation();
             output = "You are in " + place.getName() + ". " + place.getDesc();
         }
         System.out.println(output);
-    }
-    // Call the functions with direction as parameter
-    private void goN() {
-        updateOutput(movePlayerTo(Direction.NORTH));
-    }
-    private void goS() {
-        updateOutput(movePlayerTo(Direction.SOUTH));
-    }
-    private void goW() {
-        updateOutput(movePlayerTo(Direction.WEST));
-    }
-    private void goE() {
-        updateOutput(movePlayerTo(Direction.EAST));
     }
 
     // Interpret input
@@ -113,18 +159,18 @@ public class Game {
         } else {
             switch (cmd) {
                 case "n":
-                    goN();
+                    updateOutput(movePlayerTo(Direction.NORTH));
                     break;
                 case "s":
-                    goS();
+                    updateOutput(movePlayerTo(Direction.SOUTH));
                     break;
                 case "e":
                 case "l":
-                    goE();
+                    updateOutput(movePlayerTo(Direction.EAST));
                     break;
                 case "w":
                 case "o":
-                    goW();
+                    updateOutput(movePlayerTo(Direction.WEST));
                     break;
                 default:
                     msg = cmd + "can't do that yet";
@@ -151,8 +197,8 @@ public class Game {
     }
 
     public void showIntro() {
-        String s;
-        s = "O Guerreiro Titao"; // Placeholder intro
-        System.out.println(s);
+        String string;
+        string = "O Guerreiro Titao"; // Placeholder intro
+        System.out.println(string);
     }
 }

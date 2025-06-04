@@ -31,10 +31,10 @@ public class Main {
                     running = false;
                     break;
                 case "save":
-                    output = "saving";
+                    output = "saving..";
                     break;
                 case "load":
-                    output = "loading";
+                    output = "loading..";
                     break;
                 default:
                     output = game.runCommand(input);
