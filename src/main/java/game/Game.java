@@ -9,28 +9,35 @@ import java.util.*;
 
 public class Game {
 
+    private ResourceBundle Language;
+
+    public Game(ResourceBundle Language) {
+        this();
+        this.Language = Language;
+    }
+
     public HashMap<PlaceName, Place> map;
     private Actor player;
-    List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "l", "w", "o", "take", "drop"));
-    //List<String> objects = new ArrayList<>(Arrays.asList("sword", "stick"));
+    List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "l", "w", "o"));
+    List<String> objects = new ArrayList<>(Arrays.asList("sword", "stick"));
 
     public Game() {
         map = new HashMap<>();
 
         // Add Places to the map
         // map.put(PlaceName, new Place(name, desc, n, s, e, w));
-        map.put(PlaceName.MASTERHOUSE, new Place("master house", "placeholder",
-                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MYHOUSE, PlaceName.PLANTATION));
-        map.put(PlaceName.MYHOUSE, new Place("my house", "placeholder",
+        map.put(PlaceName.MASTERHOUSE, new Place(Language.getString("masterHouseName"), "placeholder",
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.YOURHOUSE, PlaceName.PLANTATION));
+        map.put(PlaceName.YOURHOUSE, new Place("my house", "placeholder",
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.WORKSHOP, PlaceName.MASTERHOUSE));
         map.put(PlaceName.WORKSHOP, new Place("workshop", "placeholder",
-                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MONASTERY, PlaceName.MYHOUSE));
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MONASTERY, PlaceName.YOURHOUSE));
         map.put(PlaceName.MONASTERY, new Place("monastery", "placeholder",
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.ELDERHOUSE, PlaceName.WORKSHOP));
         map.put(PlaceName.ELDERHOUSE, new Place("elder's house", "placeholder",
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.NOEXIT, PlaceName.MONASTERY));
         map.put(PlaceName.MOUNTBASE, new Place("mount moriah base", "placeholder",
-                PlaceName.MYHOUSE, PlaceName.MORIAH, PlaceName.NOEXIT, PlaceName.PLANTATION));
+                PlaceName.YOURHOUSE, PlaceName.MORIAH, PlaceName.NOEXIT, PlaceName.PLANTATION));
         map.put(PlaceName.MORIAH, new Place("moriah", "placeholder",
                 PlaceName.MOUNTBASE, PlaceName.FOREST, PlaceName.NOEXIT, PlaceName.PATH));
 
@@ -39,11 +46,11 @@ public class Game {
         map.put(PlaceName.PATH, new Place("path", "placeholder",
                 PlaceName.NOEXIT, PlaceName.CORRAL, PlaceName.MORIAH, PlaceName.NOEXIT));
         map.put(PlaceName.CORRAL, new Place("corral", "placeholder",
-                PlaceName.BEES, PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.ROADCURVE));
-        map.put(PlaceName.BEES, new Place("bees", "placeholder",
+                PlaceName.APIARY, PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.ROADCURVE));
+        map.put(PlaceName.APIARY, new Place("bees", "placeholder",
                 PlaceName.PLANTATION, PlaceName.CORRAL, PlaceName.NOEXIT, PlaceName.NOEXIT));
         map.put(PlaceName.PLANTATION, new Place("plantation", "placeholder",
-                PlaceName.MASTERHOUSE, PlaceName.BEES, PlaceName.MOUNTBASE, PlaceName.PLANTGATE));
+                PlaceName.MASTERHOUSE, PlaceName.APIARY, PlaceName.MOUNTBASE, PlaceName.PLANTGATE));
         map.put(PlaceName.PLANTGATE, new Place("plantation gate", "placeholder",
                 PlaceName.WGATE, PlaceName.ROADCURVE, PlaceName.PLANTATION, PlaceName.NOEXIT));
         map.put(PlaceName.ROADCURVE, new Place("road curve", "placeholder",
@@ -83,7 +90,7 @@ public class Game {
         map.put(PlaceName.COFFEE, new Place("coffee plantation", "placeholder",
                 PlaceName.NOEXIT, PlaceName.NOEXIT, PlaceName.NEWCISTERN, PlaceName.NOEXIT));
 
-        player = new Actor("player", "placeholder", map.get(PlaceName.MYHOUSE));
+        player = new Actor("player", "placeholder", map.get(PlaceName.YOURHOUSE));
     }
 
     // Accessor methods
