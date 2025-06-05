@@ -1,13 +1,17 @@
 plugins {
-	id 'java'
-	id 'application'
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
 }
 
 application {
-	mainClass = 'game.Main' // Use your actual main class
+    mainClass = 'game.Main'
 }
 
-tasks.register('runJava', JavaExec) {
-	classpath = sourceSets.main.runtimeClasspath
-	mainClass = "game.Main"
+run {
+    standardInput = System.in
+    jvmArgs = ['-Dfile.encoding=UTF-8']
 }
