@@ -54,31 +54,30 @@ public class Main {
             Language = ResourceBundle.getBundle("Language", selectedLocale, new UTF8Control());
         } catch (MissingResourceException e) {
             System.err.println("Missing resource bundle: " + e.getMessage());
-            e.printStackTrace();
             System.out.println("Language not supported. Falling back to English.");
             Language = ResourceBundle.getBundle("Language", new Locale("en"), new UTF8Control());
         }
 
         // Start game
         Game game = new Game(Language);
-
         in = new BufferedReader(new InputStreamReader(System.in));
-
         game.showIntro();
 
+        // Main loop
         do {
             System.out.print("> ");
             input = in.readLine();
             if (input == null) {
-                // Input closed, quit the game
-                System.out.println("\nInput closed, exiting game.");
+                System.out.println("\n" + Language.getString("inputClosedMsg"));
                 break;
             }
+
             input = input.trim();
             if (input.isEmpty()) {
                 continue;
             }
-            switch (input) {
+
+            switch (input.toLowerCase()) {
                 case "quit":
                     running = false;
                     break;
@@ -92,6 +91,7 @@ public class Main {
                     output = game.runCommand(input);
                     break;
             }
+
             if (!output.trim().isEmpty()) {
                 System.out.println(output);
             }
