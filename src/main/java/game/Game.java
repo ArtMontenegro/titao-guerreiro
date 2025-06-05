@@ -5,34 +5,30 @@ import gameobjects.Map.Direction;
 import gameobjects.Map.PlaceName;
 import gameobjects.Place;
 
+import java.text.MessageFormat;
 import java.util.*;
 
 public class Game {
 
     private ResourceBundle Language;
-
-    public Game(ResourceBundle Language) {
-        this();
-        this.Language = Language;
-    }
-
     public HashMap<PlaceName, Place> map;
     private Actor player;
     List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "l", "w", "o"));
     List<String> objects = new ArrayList<>(Arrays.asList("sword", "stick"));
 
-    public Game() {
+    public Game(ResourceBundle Language) {
+        this.Language = Language;
         map = new HashMap<>();
 
         // Add Places to the map
         // map.put(PlaceName, new Place(name, desc, n, s, e, w));
-        map.put(PlaceName.MASTERHOUSE, new Place(Language.getString("masterHouseName"), "placeholder",
+        map.put(PlaceName.MASTERHOUSE, new Place(Language.getString("masterHouseName"), Language.getString("masterHouseDesc"),
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.YOURHOUSE, PlaceName.PLANTATION));
-        map.put(PlaceName.YOURHOUSE, new Place("my house", "placeholder",
+        map.put(PlaceName.YOURHOUSE, new Place(Language.getString("yourHouseName"), Language.getString("yourHouseDesc"),
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.WORKSHOP, PlaceName.MASTERHOUSE));
-        map.put(PlaceName.WORKSHOP, new Place("workshop", "placeholder",
+        map.put(PlaceName.WORKSHOP, new Place(Language.getString("workshopName"), Language.getString("workshopDesc"),
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.MONASTERY, PlaceName.YOURHOUSE));
-        map.put(PlaceName.MONASTERY, new Place("monastery", "placeholder",
+        map.put(PlaceName.MONASTERY, new Place(Language.getString("monasteryName"), Language.getString("monasteryDesc"),
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.ELDERHOUSE, PlaceName.WORKSHOP));
         map.put(PlaceName.ELDERHOUSE, new Place("elder's house", "placeholder",
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.NOEXIT, PlaceName.MONASTERY));
@@ -150,7 +146,7 @@ public class Game {
             output = "No Exit!";
         } else {
             Place place = getPlayer().getLocation();
-            output = "You are in " + place.getName() + ". " + place.getDesc();
+            output = MessageFormat.format(Language.getString("locationMsg"), place.getName());
         }
         System.out.println(output);
     }
