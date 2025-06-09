@@ -1,6 +1,6 @@
 package gameobjects;
 
-import gameobjects.Map.PlaceName;
+import gameobjects.GameMap.PlaceName;
 
 /*
  * 

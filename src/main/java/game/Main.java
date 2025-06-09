@@ -19,7 +19,7 @@ public class Main {
         String output = "";
 
         // Initialize language settings
-        LanguageHandler.init();
+        LanguageHandler.loadLanguage(args);
         ResourceBundle Language = LanguageHandler.getBundle();
 
         // Start game
