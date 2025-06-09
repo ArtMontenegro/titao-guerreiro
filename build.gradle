@@ -11,7 +11,18 @@ application {
     mainClass = 'game.Main'
 }
 
+// Configure default run task
 run {
+    standardInput = System.in
+    jvmArgs = ['-Dfile.encoding=UTF-8']
+}
+
+// Register play task
+tasks.register('play', JavaExec) {
+    group = 'game'
+    description = 'Runs the game with clean console output.'
+    mainClass.set('game.Main')
+    classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     jvmArgs = ['-Dfile.encoding=UTF-8']
 }

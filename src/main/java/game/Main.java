@@ -29,7 +29,9 @@ public class Main {
             langCode = args[0].trim();
         } else {
             try {
+                System.out.println();
                 System.out.println("Choose a language/ Escolhe uma língua/ Elige un idioma");
+                System.out.println();
                 System.out.println("English: en");
                 System.out.println("Portuguese: pt");
                 System.out.println("Español: es");
@@ -80,7 +82,7 @@ public class Main {
             switch (input.toLowerCase()) {
                 case "quit":
                     running = false;
-                    break;
+                    continue;
                 case "save":
                     output = Language.getString("savingMsg");
                     break;
@@ -93,6 +95,7 @@ public class Main {
             }
 
             if (!output.trim().isEmpty()) {
+                System.out.println();
                 System.out.println(output);
             }
         } while (running);

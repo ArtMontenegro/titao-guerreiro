@@ -48,13 +48,13 @@ public class Game {
 
         // Add Places to the gameMap
         // gameMap.put(PlaceName, new Place(name, desc, n, s, e, w));
-        gameMap.put(PlaceName.MASTERHOUSE, new Place(
-                Language.getString("masterHouseName"), Language.getString("masterHouseDesc"),
+        gameMap.put(PlaceName.LEADERHOUSE, new Place(
+                Language.getString("leaderHouseName"), Language.getString("leaderHouseDesc"),
                 PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.YOURHOUSE, PlaceName.PLANTATION));
 
         gameMap.put(PlaceName.YOURHOUSE, new Place(
                 Language.getString("yourHouseName"), Language.getString("yourHouseDesc"),
-                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.WORKSHOP, PlaceName.MASTERHOUSE));
+                PlaceName.EGATE, PlaceName.MOUNTBASE, PlaceName.WORKSHOP, PlaceName.LEADERHOUSE));
 
         gameMap.put(PlaceName.WORKSHOP, new Place(
                 Language.getString("workshopName"), Language.getString("workshopDesc"),
@@ -94,7 +94,7 @@ public class Game {
 
         gameMap.put(PlaceName.PLANTATION, new Place(
                 Language.getString("plantationName"), Language.getString("plantationDesc"),
-                PlaceName.MASTERHOUSE, PlaceName.APIARY, PlaceName.MOUNTBASE, PlaceName.PLANTGATE));
+                PlaceName.LEADERHOUSE, PlaceName.APIARY, PlaceName.MOUNTBASE, PlaceName.PLANTGATE));
 
         gameMap.put(PlaceName.PLANTGATE, new Place(
                 Language.getString("plantGateName"), Language.getString("plantGateDesc"),
@@ -285,8 +285,9 @@ public class Game {
     }
 
     public void showIntro() {
-        String string;
-        string = "O Guerreiro Titao"; // Placeholder intro
-        System.out.println(string);
+        System.out.println();
+        System.out.println(Language.getString("introMsg"));
+        System.out.println();
+        System.out.println(Language.getString("helpMsg"));
     }
 }

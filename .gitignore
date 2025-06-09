@@ -1,6 +1,7 @@
 # Temporary folders
 tmp/
 temp/
+.tmp
 
 # Compiled class file
 *.class
@@ -14,14 +15,14 @@ temp/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
-# *.jar
-# *.war
-# *.nar
-# *.ear
-# *.zip
-# *.tar.gz
-# *.rar
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -30,6 +31,7 @@ replay_pid*
 # Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin/
 
+# Gradle
 .gradle
 **/build/
 !src/**/build/
@@ -52,5 +54,8 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-#IntelliJ Project Settings
+# IntelliJ Project Settings
 .idea/
+
+# VS Code Project Settings
+.vscode/
