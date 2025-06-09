@@ -1,5 +1,7 @@
 package game;
 
+import gameobjects.Place;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -104,6 +106,8 @@ public class LanguageHandler {
 
         // Reload bundle
         bundle = ResourceBundle.getBundle("Language", new Locale(langCode), new UTF8Control());
+
+        Place.setLanguage(bundle);
     }
 
     public static ResourceBundle getBundle() {

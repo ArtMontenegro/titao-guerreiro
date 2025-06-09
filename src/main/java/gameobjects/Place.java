@@ -1,5 +1,7 @@
 package gameobjects;
 
+import java.util.ResourceBundle;
+
 import gameobjects.GameMap.PlaceName;
 
 /*
@@ -9,35 +11,36 @@ import gameobjects.GameMap.PlaceName;
 
 public class Place {
 
-    private String name;
-    private String desc;
+    private String nameKey;
+    private String descKey;
     private boolean canEnter;
     private PlaceName n, s, e, w;
 
+    private static ResourceBundle currentLanguage;
+
     // Class constructor method
-    public Place(String aName, String aDesc, boolean aCanEnter, PlaceName aN, PlaceName aS, PlaceName aE, PlaceName aW) {
-        name = aName;
-        desc = aDesc;
-        canEnter = aCanEnter;
-        n = aN;
-        s = aS;
-        e = aE;
-        w = aW;
+    public Place(String aNameKey, String aDescKey, boolean aCanEnter, PlaceName aN, PlaceName aS, PlaceName aE, PlaceName aW) {
+        this.nameKey = aNameKey;
+        this.descKey = aDescKey;
+        this.canEnter = aCanEnter;
+        this.n = aN;
+        this.s = aS;
+        this.e = aE;
+        this.w = aW;
     }
     
     // Accessor methods
-    public String getName(){
-        return name;
+
+    public static void setLanguage(ResourceBundle language) {
+        currentLanguage = language;
     }
-    public void setName(String aName) {
-        this.name = aName;
+
+    public String getName() {
+        return currentLanguage.getString(nameKey);
     }
 
     public String getDesc() {
-        return desc;
-    }
-    public void setDesc(String aDesc) {
-        this.desc = aDesc;
+        return currentLanguage.getString(descKey);
     }
 
     public boolean getCanEnter() {
