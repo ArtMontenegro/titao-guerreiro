@@ -1,12 +1,12 @@
 package gameobjects;
 
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Actor {
 
-    private static ResourceBundle currentLanguage;
-    private String nameKey;
-    private String descKey;
+    private final String nameKey;
+    private final String descKey;
     private Place location; // The place where the Actor is currently located
 
     public Actor(String aNameKey, String aDescKey, Place aPlace) {
@@ -16,16 +16,20 @@ public class Actor {
     }
 
     // Accessor methods
-    public static void setLanguage(ResourceBundle language) {
-        currentLanguage = language;
+    public String getName(ResourceBundle bundle) {
+        try {
+            return bundle.getString(nameKey);
+        } catch (MissingResourceException e) {
+            return "[Missing key: " + nameKey + "]";
+        }
     }
 
-    public String getName() {
-        return currentLanguage.getString(nameKey);
-    }
-
-    public String getDesc() {
-        return currentLanguage.getString(descKey);
+    public String getDesc(ResourceBundle bundle) {
+        try {
+            return bundle.getString(descKey);
+        } catch (MissingResourceException e) {
+            return "[Missing key: " + descKey + "]";
+        }
     }
 
     public Place getLocation() {

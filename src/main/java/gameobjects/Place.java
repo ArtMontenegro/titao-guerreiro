@@ -1,5 +1,6 @@
 package gameobjects;
 
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import gameobjects.GameMap.PlaceName;
@@ -11,9 +12,8 @@ import gameobjects.GameMap.PlaceName;
 
 public class Place {
 
-    private static ResourceBundle currentLanguage;
-    private String nameKey;
-    private String descKey;
+    private final String nameKey;
+    private final String descKey;
     private boolean canEnter;
     private PlaceName n, s, e, w;
 
@@ -29,16 +29,20 @@ public class Place {
     }
     
     // Accessor methods
-    public static void setLanguage(ResourceBundle language) {
-        currentLanguage = language;
+    public String getName(ResourceBundle bundle) {
+        try {
+            return bundle.getString(nameKey);
+        } catch (MissingResourceException e) {
+            return "[Missing key: " + nameKey + "]";
+        }
     }
 
-    public String getName() {
-        return currentLanguage.getString(nameKey);
-    }
-
-    public String getDesc() {
-        return currentLanguage.getString(descKey);
+    public String getDesc(ResourceBundle bundle) {
+        try {
+            return bundle.getString(descKey);
+        } catch (MissingResourceException e) {
+            return "[Missing key: " + descKey + "]";
+        }
     }
 
     public boolean getCanEnter() {

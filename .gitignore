@@ -1,3 +1,6 @@
+# Game config file
+./config.properties
+
 # Temporary folders
 tmp/
 temp/
