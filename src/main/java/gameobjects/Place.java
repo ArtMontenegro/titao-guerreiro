@@ -11,12 +11,11 @@ import gameobjects.GameMap.PlaceName;
 
 public class Place {
 
+    private static ResourceBundle currentLanguage;
     private String nameKey;
     private String descKey;
     private boolean canEnter;
     private PlaceName n, s, e, w;
-
-    private static ResourceBundle currentLanguage;
 
     // Class constructor method
     public Place(String aNameKey, String aDescKey, boolean aCanEnter, PlaceName aN, PlaceName aS, PlaceName aE, PlaceName aW) {
@@ -30,7 +29,6 @@ public class Place {
     }
     
     // Accessor methods
-
     public static void setLanguage(ResourceBundle language) {
         currentLanguage = language;
     }

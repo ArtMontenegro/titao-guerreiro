@@ -42,18 +42,10 @@ public class Main {
             }
 
             switch (input.toLowerCase()) {
-                case "quit":
-                    running = false;
-                    continue;
-                case "save":
-                    output = Language.getString("savingMsg");
-                    break;
-                case "load":
-                    output = Language.getString("loadingMsg");
-                    break;
-                default:
-                    output = game.runCommand(input);
-                    break;
+                case "quit": running = false; continue;
+                case "save": output = Language.getString("savingMsg"); break;
+                case "load": output = Language.getString("loadingMsg"); break;
+                default: output = game.runCommand(input); break;
             }
 
             if (!output.trim().isEmpty()) {
