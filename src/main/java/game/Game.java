@@ -1,13 +1,13 @@
 package game;
 
 import gameobjects.Actor;
-import gameobjects.GameMap;
-import gameobjects.GameMap.PlaceName;
 import gameobjects.Place;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import game.GameMap.PlaceName;
 
 public class Game {
 

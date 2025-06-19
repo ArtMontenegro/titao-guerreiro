@@ -1,8 +1,6 @@
 package game;
 
 import gameobjects.Actor;
-import gameobjects.GameMap.Direction;
-import gameobjects.GameMap.PlaceName;
 import gameobjects.Place;
 
 import java.text.MessageFormat;
@@ -13,6 +11,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import game.GameMap.Direction;
+import game.GameMap.PlaceName;
 
 public class CommandHandler {
 

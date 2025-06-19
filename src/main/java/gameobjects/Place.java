@@ -3,7 +3,7 @@ package gameobjects;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import gameobjects.GameMap.PlaceName;
+import game.GameMap.PlaceName;
 
 /*
  * 

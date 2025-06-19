@@ -1,7 +1,9 @@
-package gameobjects;
+package game;
 
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
+import gameobjects.Place;
 
 public class GameMap {
 
